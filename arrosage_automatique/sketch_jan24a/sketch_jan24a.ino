@@ -63,11 +63,10 @@ void loop(){
           client.println();
           client.println("<!DOCTYPE HTML>");
           client.println("<html>");
-          client.println(viewHtml())
+          viewHtml(soilMoistureValue)
           // output the value of each analog input pin
           //client.print("analog input ");
-          client.println(soilMoistureValue);
-          client.println("</html>");
+          //client.println("</html>");
           break;
         }
         if (c == '\n') {
@@ -100,9 +99,9 @@ void loop(){
     monservo.write(90);
   }
 }
-char viewHtml() {
+void viewHtml(int soilMoistureValue) {
   const char header[] = "<head><meta charset='UTF-8'><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script><title>Pierre le Bibliothécaire</title></head>";
-  const char body []= "<body id='body' class='overview'><section class='main'><a class='titre' position='center'>Arrosage automatique</a></section><section class='section-doc'><div class='documentation'><a class='title-doc'>Documentation</a><div class='button-doc'><a class='waves-effect waves-light btn-large black' id='dogy' onclick='bonToutou()'>Clique</a></div></div></section></body>";
+  const char body []= "<body id='body' class='overview'><section class='main'><a class='titre' position='center'>Arrosage automatique</a></section><section class='section-doc'><div class='documentation'><a class='title-doc'>Données</a> <a> Taux d'humidité : "+String(soilMoistureValue)+"</a><div class='button-doc'><a class='waves-effect waves-light btn-large black' id='dogy' onclick='bonToutou()'>Clique</a></div></div></section></body>";
   const char style[]= "<style>.main {margin-top: 10%;text-align: center;font-family: 'Comic Sans MS', 'Comic Sans', cursive;font-style: normal;font-weight: normal;font-size: 30px;line-height: 37px;letter-spacing: -0.005em;}.section-doc, .section-true-doc {margin-top: 10%;}.titre {color: #FFFFFF !important;}.documentation {width: 50%;background: rgba(255, 255, 255, 0.18);border-radius: 4px;margin-left: auto;margin-right: auto;height: 35%;border: 10px solid;}.overview{background: rgba(0, 0, 0, 0.91);}.button-doc {margin-top: 10%;font-family: Damion;}.title-doc{font-family: Fredoka One;font-style: normal;font-weight: normal;font-size: 35px;letter-spacing: -0.005em;color: #000000;}.title-doc, .button-doc {text-align: center;display: block;}</style>";
 
   char view[];
@@ -110,6 +109,6 @@ char viewHtml() {
   strcat(view,body);
   strcat(view,"</html>");
   strcat(view,style);
-  
-  return view;
+
+  client.println(view);
 }
