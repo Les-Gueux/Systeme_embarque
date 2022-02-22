@@ -2,7 +2,7 @@ Le projet consiste à permettre l'arrosage automatique de plante via deux condit
 En fonction du taux d'humidité<br>
 En fonction de la température<br><br>
 
-Il aurait été possible de voir le taux d'humidité ainsi que la température de la pièce grâce à un site web qui airait été accessible depuis un port Ethernet 
+Il aurait été possible de voir le taux d'humidité ainsi que la température de la pièce grâce à un site web qui aurait été accessible depuis un port Ethernet 
 directement branché sur l'appareil Arduino.
 
 
